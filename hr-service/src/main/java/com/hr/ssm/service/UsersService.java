@@ -14,6 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UsersService extends IService<Users> {
 
-    CommonResult<Users> doLogin(Users user);
+    CommonResult<Object> doLogin(Users user) throws Exception;
 
 }

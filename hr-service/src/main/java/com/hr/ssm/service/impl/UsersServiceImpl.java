@@ -1,6 +1,7 @@
 package com.hr.ssm.service.impl;
 
 import com.hr.api.base.CommonResult;
+import com.hr.api.util.JwtUtil;
 import com.hr.api.util.UserUtil;
 import com.hr.ssm.entity.Users;
 import com.hr.ssm.mapper.UsersMapper;
@@ -29,9 +30,9 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
     private UserUtil userUtil;
 
     @Override
-    public CommonResult<Users> doLogin(Users user) {
+    public CommonResult<Object> doLogin(Users user) throws Exception {
 
-        CommonResult<Users> result;
+        CommonResult<Object> result;
 
         Users tmpUser = usersMapper.doLogin(user);
 
@@ -49,7 +50,9 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 
         if (password.equals(tmpPassword)) {
             // 密码正确
-            result = new CommonResult<>(200, "ok");
+            // 对用户的业务数据进行签名。
+            String jwtToken = JwtUtil.createToken(tmpUser);
+            result = new CommonResult<>(200, "ok", jwtToken);
         } else {
             // 密码错误
             result = new CommonResult<>(403, "密码错误");
