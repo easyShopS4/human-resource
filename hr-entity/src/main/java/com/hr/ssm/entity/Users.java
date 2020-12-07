@@ -29,5 +29,10 @@ public class Users implements Serializable {
 
     private String uPassword;
 
+    /**
+     * 盐
+     */
+    private String uSalt;
+
 
 }
