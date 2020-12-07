@@ -1,5 +1,6 @@
 package com.hr.ssm.service;
 
+import com.hr.api.base.CommonResult;
 import com.hr.ssm.entity.ConfigFileThirdKind;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-12-04
  */
 public interface ConfigFileThirdKindService extends IService<ConfigFileThirdKind> {
+
+    CommonResult<Object> getAllThirdKind();
+
+    CommonResult<Object> getAllThirdKindByThirdId(Integer thirdId);
 
 }

@@ -1,5 +1,6 @@
 package com.hr.ssm.service;
 
+import com.hr.api.base.CommonResult;
 import com.hr.ssm.entity.ConfigFileSecondKind;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +13,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-12-04
  */
 public interface ConfigFileSecondKindService extends IService<ConfigFileSecondKind> {
+
+    CommonResult<Object> getAllSecondKind();
+
+    // 根据二级机构查询所有的其它机构
+    CommonResult<Object> getSecondKindBySecondKindId(Integer secondId);
 
 }

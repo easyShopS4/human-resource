@@ -47,13 +47,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!-- 依赖工具模块~ -->
-        <dependency>
-            <groupId>com.hr</groupId>
-            <artifactId>hr-common-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
     </dependencies>
 
 

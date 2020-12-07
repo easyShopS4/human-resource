@@ -26,7 +26,7 @@ public class UsersController {
     private UsersService userService;
 
     @RequestMapping("/login")
-    public CommonResult<Users> doLogin(Users user) {
+    public CommonResult<Object> doLogin(Users user) throws Exception {
 
         return userService.doLogin(user);
     }
