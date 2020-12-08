@@ -8,7 +8,7 @@
        ">
 
     <!-- mvc 注解驱动.. -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean" />
 
     <!-- 静态资源过滤 -->
     <mvc:default-servlet-handler/>
@@ -21,4 +21,16 @@
                      allowed-headers="Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
                      allow-credentials="true" />
     </mvc:cors>
+
+    <!-- 日期转换器配置~ 支持 yyyy/MM/dd yyyy-MM-dd 以及时分秒~ -->
+    <!--日期转换器-->
+    <bean id="conversionServiceFactoryBean"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.hr.api.config.DateInterceptor"></bean>
+            </list>
+        </property>
+    </bean>
+
 </beans>

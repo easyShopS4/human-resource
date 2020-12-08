@@ -37,8 +37,9 @@ public class ConfigFileThirdKindServiceImpl extends ServiceImpl<ConfigFileThirdK
 
         Map<String, Object> colMap = new HashMap<>();
 
-        colMap.put("second_third_id", thirdId);
+        colMap.put("third_kind_id", thirdId);
 
+        // 包含了1 2 3级机构~
         List<ConfigFileThirdKind> list = thirdKindMapper.selectByMap(colMap);
 
         return new CommonResult<>(200, "ok", list);

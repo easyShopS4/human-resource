@@ -17,6 +17,6 @@ public interface ConfigFileFirstKindService extends IService<ConfigFileFirstKind
 
     List<ConfigFileFirstKind> getAllFistKind();
 
-    List<ConfigFileFirstKind> getAllFistKindById(Integer firstKindId);
+    List<Object> getAllFistKindById(Integer firstKindId);
 
 }

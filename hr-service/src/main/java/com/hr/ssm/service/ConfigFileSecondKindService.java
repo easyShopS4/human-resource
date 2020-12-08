@@ -17,6 +17,6 @@ public interface ConfigFileSecondKindService extends IService<ConfigFileSecondKi
     CommonResult<Object> getAllSecondKind();
 
     // 根据二级机构查询所有的其它机构
-    CommonResult<Object> getSecondKindBySecondKindId(Integer secondId);
+    CommonResult<Object> getSecondKindBySecondKindId(Integer secondKindId);
 
 }

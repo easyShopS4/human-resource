@@ -54,7 +54,7 @@ public class EngageMajorRelease implements Serializable {
 
     private String changer;
 
-    private Date registTime;
+    private Date registerTime;
 
     private Date changeTime;
 
