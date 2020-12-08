@@ -31,7 +31,23 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:mapper/*.xml" />
         <property name="typeAliasesPackage" value="com.code.project.entity" />
+
+        <!-- 配置分页插件~ -->
+        <property name="plugins">
+            <array>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+                    <!-- COUNT SQL 解析.可以没有 -->
+                    <property name="countSqlParser" ref="countSqlParser"/>
+                </bean>
+            </array>
+        </property>
     </bean>
+
+    <bean id="countSqlParser" class="com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize">
+        <!-- 设置为 true 可以优化部分 left join 的sql -->
+        <property name="optimizeJoin" value="true"/>
+    </bean>
+
 
     <!-- 扫描接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
