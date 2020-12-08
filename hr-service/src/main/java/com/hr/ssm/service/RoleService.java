@@ -1,11 +1,11 @@
 package com.hr.ssm.service;
 
-import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.hr.ssm.entity.Role;
 
 /**
  * @Author 不言语OvO
  * @Date 2020/12/8 16:05
  */
-@Service
-public interface RoleService {
+public interface RoleService  extends IService<Role> {
 }
