@@ -5,7 +5,6 @@ import com.hr.api.base.CommonResult;
 import com.hr.ssm.entity.Users;
 import com.hr.ssm.service.UsersService;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -30,6 +29,8 @@ public class UsersController {
 
         return userService.doLogin(user);
     }
+
+
 
 }
 
