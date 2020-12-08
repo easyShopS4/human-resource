@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.ssm.mapper.SalaryStandardMapper">
+<!--    <resultMap type="com.hr.entity.SalaryStandard" id="BaseResultMap">
+
+        &lt;!&ndash;主键，自动增长列      &ndash;&gt;
+    <id jdbcType="INTEGER" property="ssdId" column="ssd_id"/>
+        &lt;!&ndash;"standard_id" : 薪酬标准单编号      &ndash;&gt;
+    <result jdbcType="VARCHAR" property="standardId" column="standard_id"/>
+        &lt;!&ndash;"standard_name" : 薪酬标准单名称     &ndash;&gt;
+    <result jdbcType="VARCHAR" property="standardName" column="standard_name"/>
+        &lt;!&ndash;	"designer" : 制定者名字         &ndash;&gt;
+    <result jdbcType="VARCHAR" property="designer" column="designer"/>
+        &lt;!&ndash;"register" : 登记人       &ndash;&gt;
+    <result jdbcType="VARCHAR" property="register" column="register"/>
+        &lt;!&ndash;"checker" : 复核人        &ndash;&gt;
+    <result jdbcType="VARCHAR" property="checker" column="checker"/>
+        &lt;!&ndash;	"changer" : 变更人        &ndash;&gt;
+    <result jdbcType="VARCHAR" property="changer" column="changer"/>
+        &lt;!&ndash;"register_time" : 登记时间        &ndash;&gt;
+    <result jdbcType="TIMESTAMP" property="registerTime" column="register_time"/>
+        &lt;!&ndash;"check_time" : 复核时间        &ndash;&gt;
+    <result jdbcType="TIMESTAMP" property="checkTime" column="check_time"/>
+        &lt;!&ndash;主	"change_time" : 变更时间      &ndash;&gt;
+    <result jdbcType="TIMESTAMP" property="changeTime" column="change_time"/>
+        &lt;!&ndash;"salary_sum" : 薪酬总额    &ndash;&gt;
+    <result jdbcType="DOUBLE" property="salarySum" column="salary_sum"/>
+        &lt;!&ndash;"check_status" : 是否经过复核      &ndash;&gt;
+    <result jdbcType="INTEGER" property="checkStatus" column="check_status"/>
+        &lt;!&ndash;"change_status" : 更改状态            &ndash;&gt;
+    <result jdbcType="INTEGER" property="changeStatus" column="change_status"/>
+        &lt;!&ndash;"check_comment" : 复核意见      &ndash;&gt;
+    <result jdbcType="VARCHAR" property="checkComment" column="check_comment"/>
+        &lt;!&ndash; remark" : 备注    &ndash;&gt;
+    <result jdbcType="VARCHAR" property="remark" column="remark"/>
+
+</resultMap>
+
+    <insert id="salaryStandardInser" parameterType="com.hr.entity.SalaryStandard" >
+   insert into  salary_standard values(null,${standardId},${standardName},${designer},${register},null,null,SYSDATE(),null,null,${salarySum},1,1,null,${remark})
+</insert>-->
 
 </mapper>

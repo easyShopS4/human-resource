@@ -4,6 +4,7 @@ import com.hr.ssm.entity.SalaryStandard;
 import com.hr.ssm.mapper.SalaryStandardMapper;
 import com.hr.ssm.service.SalaryStandardService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
