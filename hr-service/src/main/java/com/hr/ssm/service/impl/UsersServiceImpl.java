@@ -1,15 +1,19 @@
 package com.hr.ssm.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hr.api.base.CommonResult;
+import com.hr.api.base.DataGridView;
 import com.hr.api.util.JwtUtil;
 import com.hr.api.util.UserUtil;
 import com.hr.ssm.entity.Users;
 import com.hr.ssm.mapper.UsersMapper;
 import com.hr.ssm.service.UsersService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -62,4 +66,27 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 
 
 
+    @Override
+    public DataGridView getUserByPage
+            (IPage<Users> page, Wrapper<Users> wrapper) {
+
+        // 分页的所有数据
+        IPage<Users> pageInfo = usersMapper.selectPage(page, wrapper);
+        // 集合
+        List<Users> dataList = pageInfo.getRecords();
+
+        // 返回消息 状态码 当前条件下的行数 数据
+        return new DataGridView("", 0, pageInfo.getTotal(), dataList);
+    }
+
+    @Override
+    public CommonResult<Object> findAllUser() throws Exception {
+        CommonResult<Object> result;
+        List<Users> users = usersMapper.findAllUser();
+        result = new CommonResult<>(200, "ok", users);
+
+        return null;
+    }
 }
+
+

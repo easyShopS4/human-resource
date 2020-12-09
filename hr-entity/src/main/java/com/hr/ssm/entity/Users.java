@@ -2,9 +2,10 @@ package com.hr.ssm.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -33,6 +34,5 @@ public class Users implements Serializable {
      * 盐
      */
     private String uSalt;
-
 
 }
