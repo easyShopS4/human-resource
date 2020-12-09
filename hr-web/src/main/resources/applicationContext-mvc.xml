@@ -33,4 +33,18 @@
         </property>
     </bean>
 
+    <!-- 拦截器 -->
+    <!--<mvc:interceptors>
+        &lt;!&ndash; 用户是否登录 作用的拦截器 &ndash;&gt;
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+
+            &lt;!&ndash; 不拦截 login方法&ndash;&gt;
+            <mvc:exclude-mapping path="/ssm/users/login"/>
+
+            <bean class="com.hr.ssm.interceptor.AllInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+
 </beans>
