@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hr.ssm.entity.Users;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -21,7 +23,10 @@ public interface UsersMapper extends BaseMapper<Users> {
     @Select("select * from users where u_name = #{uName}")
     Users doLogin(Users user);
 
-
-
+    /**
+     * 查询所有用户
+     */
+    @Select("")
+    List<Users> findAllUser();
 
 }
