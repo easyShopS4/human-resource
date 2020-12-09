@@ -2,11 +2,13 @@ package com.hr.ssm.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hr.api.annotation.AuthCheck;
 import com.hr.api.base.CommonResult;
 import com.hr.api.base.DataGridView;
 import com.hr.ssm.entity.Users;
 import com.hr.ssm.service.UsersService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +28,18 @@ public class UsersController {
 
     @Resource
     private UsersService userService;
+
+    /**
+     * 使用jwt验证用户是否登录~ 请求发送到这里
+     * @return 返回msg
+     */
+    @PostMapping("/check")
+    @AuthCheck // 此注解必加，拦截器会读取此注解
+    public String checkAuth() {
+
+        return "ok";
+    }
+
 
     /**
      * 用户登录

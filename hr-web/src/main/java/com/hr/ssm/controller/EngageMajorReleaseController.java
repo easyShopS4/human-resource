@@ -9,6 +9,7 @@ import com.hr.ssm.service.EngageMajorReleaseService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -51,7 +52,10 @@ public class EngageMajorReleaseController {
     }
 
     @PostMapping("/upd")
-    public CommonResult<Boolean> updateEngageMajorReleaseByPkId(EngageMajorRelease majorRelease) {
+    public CommonResult<Boolean> updateEngageMajorReleaseByPkId(EngageMajorRelease majorRelease, HttpServletRequest request) {
+
+        Object uId = request.getAttribute("uId"); // TODO: 需要获取到uid
+        System.out.println("从jwtToken中获取到用户id:" + uId);
 
         // tmp, after my jwt finish~
         majorRelease.setChanger("tmp changer");

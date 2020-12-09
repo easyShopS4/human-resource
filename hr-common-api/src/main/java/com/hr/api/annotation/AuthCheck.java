@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @date 2020/12/8
  * @author echo lovely
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AuthCheck {
 }

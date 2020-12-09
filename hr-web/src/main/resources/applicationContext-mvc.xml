@@ -34,17 +34,24 @@
     </bean>
 
     <!-- 拦截器 -->
-    <!--<mvc:interceptors>
-        &lt;!&ndash; 用户是否登录 作用的拦截器 &ndash;&gt;
+    <mvc:interceptors>
+        <!-- 用户是否登录 作用的拦截器 -->
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
 
-            &lt;!&ndash; 不拦截 login方法&ndash;&gt;
+            <!-- 不拦截 login方法-->
             <mvc:exclude-mapping path="/ssm/users/login"/>
 
             <bean class="com.hr.ssm.interceptor.AllInterceptor"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>-->
+
+        <!-- 经过权限验证后，拦截所有controller，用来获取用户的token信息 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/ssm/users/login"/>
+            <bean class="com.hr.ssm.interceptor.UserTokenInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>
