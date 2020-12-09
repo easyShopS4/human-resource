@@ -9,6 +9,7 @@ import com.hr.ssm.service.EngageMajorReleaseService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * <p>
@@ -49,6 +50,32 @@ public class EngageMajorReleaseController {
         return new CommonResult<>(200, "ok", majorReleaseService.getById(id));
     }
 
+    @PostMapping("/upd")
+    public CommonResult<Boolean> updateEngageMajorReleaseByPkId(EngageMajorRelease majorRelease) {
+
+        // tmp, after my jwt finish~
+        majorRelease.setChanger("tmp changer");
+        majorRelease.setChangeTime(new Date(System.currentTimeMillis()));
+        boolean b = majorReleaseService.updateById(majorRelease);
+
+        if (b) {
+            return new CommonResult<>(200, "ok", b);
+        }
+
+        return new CommonResult<>(444, "update fail~", false);
+    }
+
+    @RequestMapping("del/{id}")
+    public CommonResult<Boolean> delEngageMajorReleaseByPkId(@PathVariable("id") Integer id) {
+
+        boolean b = majorReleaseService.removeById(id);
+
+        if (b) {
+            return new CommonResult<>(200, "ok", b);
+        }
+
+        return new CommonResult<>(444, "delete fail~", false);
+    }
 
 }
 

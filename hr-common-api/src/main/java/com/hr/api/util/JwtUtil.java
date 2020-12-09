@@ -26,8 +26,8 @@ public class JwtUtil {
 
     //密钥（不能泄露 、可多次加盐加密再存在合适的地方）
     public static final String SECRET = "defAu&TJHVhc$%WW^JJG";
-    //过期时间:秒
-    public static final int EXPIRE = 300;
+    //过期时间:秒 5min
+    public static final int EXPIRE = 1800;
 
     /**
      * JWT 添加至HTTP HEAD中的前缀
