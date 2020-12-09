@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -59,8 +61,7 @@ select * from   salary_standard                                                 
     //前台-->>后台
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //后台-->>前台
-   // @JsonFormat(pattern="yyyy-MM-dd")
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date registerTime;
 
     private Date checkTime;

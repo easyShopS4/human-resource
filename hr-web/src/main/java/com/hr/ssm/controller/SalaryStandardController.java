@@ -1,17 +1,16 @@
 package com.hr.ssm.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hr.api.base.CommonResult;
+import com.hr.api.base.DataGridView;
+import com.hr.ssm.entity.EngageMajorRelease;
 import com.hr.ssm.entity.SalaryStandard;
 import com.hr.ssm.entity.Users;
 import com.hr.ssm.service.SalaryStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,11 +46,44 @@ public class SalaryStandardController {
 
     }
     //http://127.0.0.1:8080/ssm/salary-standard/SalaryStandardList
-    @RequestMapping("/SalaryStandardList")
-    public List<SalaryStandard> SalaryStandardList() {
-    System.out.println(123);
-        return salaryStandardService.list();
+    @RequestMapping("/SalaryStandardList") //条件查询
+    public List<SalaryStandard> SalaryStandardList(SalaryStandard ss) {
+        return  salaryStandardService.findSalaryStandard(ss);
 
+    }
+
+
+   // http://127.0.0.1:8080/ssm/salary-standard/E_RegistrationReviewList
+    @RequestMapping("/E_RegistrationReviewList")
+    public SalaryStandard e_RegistrationReviewList(SalaryStandard id) {
+        System.out.println("访问E_RegistrationReviewList成功"+id.getSsdId());
+        return  salaryStandardService.getById(id.getSsdId());
+
+    }
+
+    // http://127.0.0.1:8080/ssm/salary-standard/E_RegistrationReviewList
+    @RequestMapping("E_RegistrationReviewUpdate")
+    public String e_RegistrationReviewUpdate(SalaryStandard standard) {
+        System.out.println("访问e_RegistrationReviewUpdate成功"+standard);
+        boolean bool= salaryStandardService.updateById(standard);
+        if (bool) {
+            return "ok";
+        }
+        return "on";
+
+    }
+
+
+    @GetMapping("/FeiYe") //分页
+    public DataGridView getMajorReleaseByPage(Integer page, Integer limit) {
+
+        // 页数，每页多少行~
+        Page<SalaryStandard> p = new Page<>();
+        p.setCurrent(page);
+        p.setSize(limit);
+
+        // 分页，不带条件~
+        return salaryStandardService.getSalaryStandardByPage(p, null);
     }
 
 }
