@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -34,5 +35,7 @@ public class Users implements Serializable {
      * 盐
      */
     private String uSalt;
+
+    private List<Role> roleList;
 
 }
