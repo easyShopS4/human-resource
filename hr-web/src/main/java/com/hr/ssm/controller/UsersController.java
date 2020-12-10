@@ -35,9 +35,8 @@ public class UsersController {
      */
     @PostMapping("/check")
     @AuthCheck // 此注解必加，拦截器会读取此注解
-    public String checkAuth() {
+    public void checkAuth() {
 
-        return "ok";
     }
 
 
