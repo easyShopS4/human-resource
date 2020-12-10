@@ -2,4 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.ssm.mapper.UsersMapper">
 
+    <!--
+    思路:
+        1. 查询所有的用户信息
+        2. 根据查询出来的用户的uid，寻找对应的角色！  子查询
+    -->
+        <!-- 自定义结果映射 -->
+        <resultMap type="com.hr.ssm.entity.Users" id="userMap">
+            <id property="uId" column="u_id"/>
+            <result property="uName" column="u_name"/>
+            <result property="uTrueName" column="u_true_name"/>
+            <result property="uPassword" column="u_password"/>
+            <!-- 多表关联映射 -->
+            <collection property="roleList" ofType="com.hr.ssm.entity.Role">
+                <id property="rId" column="r_id"/>
+                <result property="rName" column="r_name"/>
+                <result property="rExplain" column="r_explain"/>
+            </collection>
+        </resultMap>
+
+      <!--  <select id="selectOneRole" parameterType="Integer" resultMap="userMap">
+            SELECT * FROM
+             users u ,role r,users_role ur
+            WHERE ur.u_r_uid = u.`u_id`
+              AND ur.u_r_rid = r.`r_id` AND  r.r_id=#{rid}
+        </select>-->
+
+    <select id="findAllUser" resultMap = "userMap" >
+        SELECT * FROM users u  ,role r,users_role ur
+        WHERE ur.u_r_uid = u.`u_id`
+          AND ur.u_r_rid = r.`r_id`
+    </select>
 </mapper>
+

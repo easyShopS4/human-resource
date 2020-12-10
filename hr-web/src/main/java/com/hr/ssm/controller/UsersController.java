@@ -73,7 +73,11 @@ public class UsersController {
     /**
      * 查询所有用户
      */
-
+    @RequestMapping("/allUser")
+    public CommonResult<Object> findAllUser() throws Exception {
+        System.out.println(userService.findAllUser());
+        return userService.findAllUser();
+    }
 
 }
 

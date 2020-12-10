@@ -26,7 +26,7 @@ public interface UsersMapper extends BaseMapper<Users> {
     /**
      * 查询所有用户
      */
-    @Select("")
+
     List<Users> findAllUser();
 
 }

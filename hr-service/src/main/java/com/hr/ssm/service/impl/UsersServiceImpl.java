@@ -83,9 +83,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
     public CommonResult<Object> findAllUser() throws Exception {
         CommonResult<Object> result;
         List<Users> users = usersMapper.findAllUser();
-        result = new CommonResult<>(200, "ok", users);
-
-        return null;
+        result = new CommonResult<>(0, "ok", users);
+        return result;
     }
 }
 
