@@ -2,7 +2,9 @@ package com.hr.ssm.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hr.ssm.entity.Role;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @Author 不言语OvO
@@ -10,5 +12,12 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
-    Role selectOneRole(@Param("rid") Integer rid);
+    /**
+     * 查询所有角色
+     */
+
+    @Select("SELECT * FROM role")
+    List<Role> findAllRole();
+
+
 }
