@@ -1,7 +1,9 @@
 package com.hr.ssm.interceptor;
 
 import com.auth0.jwt.interfaces.Claim;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hr.api.annotation.AuthCheck;
+import com.hr.api.base.CommonResult;
 import com.hr.api.util.JwtUtil;
 import com.hr.ssm.entity.Users;
 import com.hr.ssm.mapper.UsersMapper;
@@ -76,7 +78,8 @@ public class AllInterceptor implements HandlerInterceptor {
                     e.printStackTrace();
                     // token无效，不放行~
                     response.setContentType("text/json;charset=utf-8");
-                    response.getWriter().write("bad");
+                    CommonResult<String> commonResult = new CommonResult<>(403, "bad", "bad");
+                    response.getWriter().write(new ObjectMapper().writeValueAsString(commonResult));
                     return false;
                 }
 
@@ -126,8 +129,10 @@ public class AllInterceptor implements HandlerInterceptor {
                     // create~
                     jwtToken = JwtUtil.createToken(user);
 
-                    response.setContentType("text/html;charset=utf-8");
-                    response.getWriter().write(jwtToken);
+                    response.setContentType("text/json;charset=utf-8");
+                    // 响应码为201时更新token
+                    CommonResult<String> commonResult = new CommonResult<>(200, "update token", jwtToken);
+                    response.getWriter().write(new ObjectMapper().writeValueAsString(commonResult));
                 }
 
             }

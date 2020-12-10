@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hr.api.base.CommonResult;
 import com.hr.api.base.DataGridView;
 import com.hr.ssm.entity.EngageMajorRelease;
+import com.hr.ssm.entity.Users;
+import com.hr.ssm.mapper.UsersMapper;
 import com.hr.ssm.service.EngageMajorReleaseService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,9 @@ public class EngageMajorReleaseController {
 
     @Resource
     private EngageMajorReleaseService majorReleaseService;
+
+    @Resource
+    private UsersMapper usersMapper;
 
     @PostMapping("/add")
     public CommonResult<Object> addMajorRelease(EngageMajorRelease majorRelease) {
@@ -57,9 +62,19 @@ public class EngageMajorReleaseController {
         Object uId = request.getAttribute("uId"); // TODO: 需要获取到uid
         System.out.println("从jwtToken中获取到用户id:" + uId);
 
-        // tmp, after my jwt finish~
-        majorRelease.setChanger("tmp changer");
+        if (uId != null) {
+            // 我的jwt可能bug
+            Users currentUser = usersMapper.selectById((Integer) uId);
+            if (currentUser != null) {
+                majorRelease.setChanger(currentUser.getUTrueName());
+            } else {
+                // tmp, after my jwt finish~
+                majorRelease.setChanger("tmp changer");
+            }
+        }
+
         majorRelease.setChangeTime(new Date(System.currentTimeMillis()));
+
         boolean b = majorReleaseService.updateById(majorRelease);
 
         if (b) {
