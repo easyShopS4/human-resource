@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @Author 不言语OvO
@@ -22,5 +23,6 @@ public class Role implements Serializable {
 
     private String rExplain;
 
+    private List<Users> usersList;
 
 }
