@@ -1,5 +1,6 @@
 package com.hr.ssm.controller;
 
+import com.hr.api.base.CommonResult;
 import com.hr.ssm.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,4 +17,12 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    /**
+     * 查询所有角色
+     */
+    @RequestMapping("/allRole")
+    public CommonResult<Object> findAllRole() throws Exception {
+        System.out.println(roleService.findAllRole());
+        return roleService.findAllRole();
+    }
 }
