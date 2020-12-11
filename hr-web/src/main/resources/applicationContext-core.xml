@@ -31,6 +31,8 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:mapper/*.xml" />
         <property name="typeAliasesPackage" value="com.code.project.entity" />
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+
 
         <!-- 配置分页插件~ -->
         <property name="plugins">

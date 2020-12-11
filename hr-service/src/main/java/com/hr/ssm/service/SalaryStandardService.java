@@ -21,10 +21,12 @@ import java.util.List;
  * @since 2020-12-04
  */
 public interface SalaryStandardService extends IService<SalaryStandard> {
+    //变更四个条件查询
+    DataGridView findSalaryStandardBG(IPage<SalaryStandard> page, SalaryStandard wrapper);
      //四个条件查询
-  public List<SalaryStandard> findSalaryStandard(SalaryStandard ss);
+     DataGridView findSalaryStandard(IPage<SalaryStandard> page, SalaryStandard wrapper);
 
-    // 职位变更分页~
+    // 分页~
     DataGridView getSalaryStandardByPage(IPage<SalaryStandard> page, Wrapper<SalaryStandard> wrapper);
 
 

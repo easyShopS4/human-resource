@@ -40,20 +40,38 @@
     select
     <include refid="Base_Column_List"/>
     from salary_standard where  1=1
-        <if test="standardId != null">
-            <bind name="myStandardId" value="'%'+standardId+'%'"></bind>
+        <if test="ss.standardId != null">
+            <bind name="myStandardId" value="'%'+ss.standardId+'%'"></bind>
            and standard_id LIKE #{myStandardId}
          </if>
 
-        <if test="standardName != null and standardName != '' ">
-            and standard_name  = #{standardName}
+        <if test="ss.standardName != null and ss.standardName != '' ">
+            and standard_name  = #{ss.standardName}
         </if>
-        <if test="registerTime != null and checkTime!=null" >
-            <![CDATA[ and register_time >=#{registerTime} and  register_time >=#{checkTime}]]>
+        <if test="ss.registerTime != null and ss.checkTime!=null" >
+            <![CDATA[ and register_time >=#{ss.registerTime} and  register_time >=#{ss.checkTime}]]>
         </if>
 
 
 </select>
 
+    <select id="findSalaryStandardBG" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from salary_standard where  check_status=2
+        <if test="ss.standardId != null">
+            <bind name="myStandardId" value="'%'+ss.standardId+'%'"></bind>
+            and standard_id LIKE #{myStandardId}
+        </if>
+
+        <if test="ss.standardName != null and ss.standardName != '' ">
+            and standard_name  = #{ss.standardName}
+        </if>
+        <if test="ss.registerTime != null and ss.checkTime!=null" >
+            <![CDATA[ and register_time >=#{ss.registerTime} and  register_time >=#{ss.checkTime}]]>
+        </if>
+
+
+    </select>
 
 </mapper>

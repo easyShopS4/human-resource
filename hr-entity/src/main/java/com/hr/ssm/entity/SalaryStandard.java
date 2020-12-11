@@ -2,6 +2,8 @@ package com.hr.ssm.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
@@ -77,6 +79,19 @@ select * from   salary_standard                                                 
     private String checkComment;
 
     private String remark;
+
+   //项目需要
+    private Double  mission ;//出差补贴
+
+    private Double travel  ; //交通补贴
+
+    private Double housing ;//住房补贴
+
+    private Double base ; //基本工资
+
+    private Double year ;//年终奖
+
+    private Double  missed ; //误餐补助
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -202,6 +217,75 @@ select * from   salary_standard                                                 
         this.remark = remark;
     }
 
+  /*  @Override
+    public String toString() {
+        return "SalaryStandard{" +
+                "ssdId=" + ssdId +
+                ", standardId='" + standardId + '\'' +
+                ", standardName='" + standardName + '\'' +
+                ", designer='" + designer + '\'' +
+                ", register='" + register + '\'' +
+                ", checker='" + checker + '\'' +
+                ", changer='" + changer + '\'' +
+                ", registerTime=" + registerTime +
+                ", checkTime=" + checkTime +
+                ", changeTime=" + changeTime +
+                ", salarySum=" + salarySum +
+                ", checkStatus=" + checkStatus +
+                ", changeStatus=" + changeStatus +
+                ", checkComment='" + checkComment + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }*/
+
+    public Double getMission() {
+        return mission;
+    }
+
+    public void setMission(Double mission) {
+        this.mission = mission;
+    }
+
+    public Double getTravel() {
+        return travel;
+    }
+
+    public void setTravel(Double travel) {
+        this.travel = travel;
+    }
+
+    public Double getHousing() {
+        return housing;
+    }
+
+    public void setHousing(Double housing) {
+        this.housing = housing;
+    }
+
+    public Double getBase() {
+        return base;
+    }
+
+    public void setBase(Double base) {
+        this.base = base;
+    }
+
+    public Double getYear() {
+        return year;
+    }
+
+    public void setYear(Double year) {
+        this.year = year;
+    }
+
+    public Double getMissed() {
+        return missed;
+    }
+
+    public void setMissed(Double missed) {
+        this.missed = missed;
+    }
+
     @Override
     public String toString() {
         return "SalaryStandard{" +
@@ -220,6 +304,12 @@ select * from   salary_standard                                                 
                 ", changeStatus=" + changeStatus +
                 ", checkComment='" + checkComment + '\'' +
                 ", remark='" + remark + '\'' +
+                ", mission=" + mission +
+                ", travel=" + travel +
+                ", housing=" + housing +
+                ", base=" + base +
+                ", year=" + year +
+                ", missed=" + missed +
                 '}';
     }
 }
