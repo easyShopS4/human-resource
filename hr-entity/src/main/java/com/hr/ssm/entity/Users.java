@@ -1,6 +1,7 @@
 package com.hr.ssm.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,6 +37,8 @@ public class Users implements Serializable {
      */
     private String uSalt;
 
+    // 它在表中不存在`
+    @TableField(exist = false)
     private List<Role> roleList;
 
 

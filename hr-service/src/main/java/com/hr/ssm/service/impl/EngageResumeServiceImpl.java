@@ -30,9 +30,21 @@ public class EngageResumeServiceImpl extends ServiceImpl<EngageResumeMapper, Eng
 
         QueryWrapper<EngageResume> queryWrapper = new QueryWrapper<>();
 
-        queryWrapper.eq("human_major_id", resume.getHumanMajorId()).  // 根据职位名称查询~
-                eq("human_major_kind_id", resume.getHumanMajorKindId()). //  根据职位分类模糊查询~
-                between("register_time", resume.getStartDate(), resume.getEndDate());  // 根据时间查询~ register_time
+        if (resume.getHumanMajorId() != null) {
+            queryWrapper.eq("human_major_id", resume.getHumanMajorId());  // 根据职位名称查询~
+        }
+
+        if (resume.getHumanMajorKindId() != null) {
+            queryWrapper.eq("human_major_kind_id", resume.getHumanMajorKindId()); //  根据职位分类模糊查询~
+        }
+
+        if (resume.getStartDate() != null) {
+            queryWrapper.ge("register_time", resume.getStartDate()); // 根据时间查询~ register_time
+        }
+
+        if (resume.getEndDate() != null) {
+            queryWrapper.le("register_time", resume.getEndDate()); // 根据时间查询~ register_time
+        }
 
         IPage<EngageResume> resumeIPage = resumeMapper.selectPage(page, queryWrapper);
 

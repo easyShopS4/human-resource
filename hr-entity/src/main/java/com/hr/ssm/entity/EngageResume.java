@@ -95,7 +95,7 @@ public class EngageResume implements Serializable {
 
     private String register;
 
-    private Date registTime;
+    private Date registerTime;
 
     private String checker;
 
@@ -113,7 +113,7 @@ public class EngageResume implements Serializable {
 
     private String passRegister;
 
-    private Date passRegistTime;
+    private Date passRegisterTime;
 
     private String passChecker;
 
@@ -130,11 +130,13 @@ public class EngageResume implements Serializable {
     /**
      * 开始的注册时间
      */
+    @TableField(exist = false)
     private Date startDate;
 
     /**
      * 结束的注册时间
      */
+    @TableField(exist = false)
     private Date endDate;
 
 }
