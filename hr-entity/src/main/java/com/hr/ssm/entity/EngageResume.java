@@ -127,5 +127,14 @@ public class EngageResume implements Serializable {
     @TableField("pass_passComment")
     private String passPasscomment;
 
+    /**
+     * 开始的注册时间
+     */
+    private Date startDate;
+
+    /**
+     * 结束的注册时间
+     */
+    private Date endDate;
 
 }

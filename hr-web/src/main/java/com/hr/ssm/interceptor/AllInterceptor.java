@@ -75,7 +75,8 @@ public class AllInterceptor implements HandlerInterceptor {
 
                 } catch (RuntimeException e) {
 
-                    e.printStackTrace();
+                    // e.printStackTrace();
+                    System.out.println(e.getMessage());
                     // token无效，不放行~
                     response.setContentType("text/json;charset=utf-8");
                     CommonResult<String> commonResult = new CommonResult<>(403, "bad", "bad");
