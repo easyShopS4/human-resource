@@ -5,6 +5,8 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -63,6 +65,7 @@ public class EngageResume implements Serializable {
 
     private String humanRace;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date humanBirthday;
 
     private Integer humanAge;
@@ -95,10 +98,12 @@ public class EngageResume implements Serializable {
 
     private String register;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date registerTime;
 
     private String checker;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date checkTime;
 
     private Integer interviewStatus;
@@ -109,14 +114,17 @@ public class EngageResume implements Serializable {
 
     private String testChecker;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date testCheckTime;
 
     private String passRegister;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date passRegisterTime;
 
     private String passChecker;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date passCheckTime;
 
     private Integer passCheckStatus;

@@ -8,6 +8,7 @@ import com.hr.ssm.mapper.EngageResumeMapper;
 import com.hr.ssm.service.EngageResumeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
@@ -30,11 +31,15 @@ public class EngageResumeServiceImpl extends ServiceImpl<EngageResumeMapper, Eng
 
         QueryWrapper<EngageResume> queryWrapper = new QueryWrapper<>();
 
-        if (resume.getHumanMajorId() != null) {
+        if (!StringUtils.isEmpty(resume.getCheckStatus())) {
+            queryWrapper.eq("check_status", resume.getCheckStatus());
+        }
+
+        if (!StringUtils.isEmpty(resume.getHumanMajorId())) {
             queryWrapper.eq("human_major_id", resume.getHumanMajorId());  // 根据职位名称查询~
         }
 
-        if (resume.getHumanMajorKindId() != null) {
+        if (!StringUtils.isEmpty(resume.getHumanMajorKindId())) {
             queryWrapper.eq("human_major_kind_id", resume.getHumanMajorKindId()); //  根据职位分类模糊查询~
         }
 

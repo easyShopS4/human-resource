@@ -55,5 +55,29 @@ public class EngageResumeController {
         return new CommonResult<>(200, "ok", resumeService.getById(id));
     }
 
+    // checkStatus 0. 待复核 1. 已复核, 下一个环节是面试
+    @RequestMapping(value = "/updCheckStatus", method = RequestMethod.PUT)
+    public CommonResult<String> updateResume(EngageResume resume) {
+
+        System.out.println("============>" + resume);
+
+        if (resume != null) {
+            boolean b = resumeService.updateById(resume);
+            if (b) {
+                return new CommonResult<>(200, "ok", "ok");
+            }
+        }
+
+        return new CommonResult<>(444, "bad", "bad");
+    }
+
+    @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
+    public CommonResult<String> delResumeByPkId(@PathVariable("id") Integer id) {
+
+        resumeService.removeById(id);
+
+        return new CommonResult<>(200, "ok", "ok");
+    }
+
 }
 
