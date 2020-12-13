@@ -32,6 +32,7 @@ public class EngageResumeController {
     public CommonResult<Integer> addResume(EngageResume resume) {
 
         resume.setCheckStatus(0); // 默认未复核~
+        resume.setInterviewStatus(0); // 默认待面试
         boolean b = resumeService.save(resume);
 
         if (b) {

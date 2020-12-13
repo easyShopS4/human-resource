@@ -35,6 +35,10 @@ public class EngageResumeServiceImpl extends ServiceImpl<EngageResumeMapper, Eng
             queryWrapper.eq("check_status", resume.getCheckStatus());
         }
 
+        if (!StringUtils.isEmpty(resume.getInterviewStatus())) {
+            queryWrapper.eq("interview_status", resume.getInterviewStatus());
+        }
+
         if (!StringUtils.isEmpty(resume.getHumanMajorId())) {
             queryWrapper.eq("human_major_id", resume.getHumanMajorId());  // 根据职位名称查询~
         }
