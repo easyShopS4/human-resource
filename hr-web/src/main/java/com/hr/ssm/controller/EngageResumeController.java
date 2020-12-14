@@ -10,6 +10,7 @@ import com.hr.ssm.service.EngageResumeService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * <p>
@@ -63,6 +64,9 @@ public class EngageResumeController {
         System.out.println("============>" + resume);
 
         if (resume != null) {
+            // 写死 lazy init..
+            resume.setRegister("admin");
+            resume.setRegisterTime(new Date(System.currentTimeMillis()));
             boolean b = resumeService.updateById(resume);
             if (b) {
                 return new CommonResult<>(200, "ok", "ok");

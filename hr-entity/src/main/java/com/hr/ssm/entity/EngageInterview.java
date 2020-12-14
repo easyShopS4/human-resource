@@ -65,11 +65,11 @@ public class EngageInterview implements Serializable {
 
     private String result;
 
-    private Integer interviewComment;
+    private String interviewComment; // 面试评价~
 
     private String checkComment;
 
-    private Integer interviewStatus;
+    private Integer interviewStatus; // 1. 已经面试
 
     private Integer checkStatus;
 
