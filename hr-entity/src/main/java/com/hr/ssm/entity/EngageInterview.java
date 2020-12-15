@@ -5,6 +5,8 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -57,13 +59,15 @@ public class EngageInterview implements Serializable {
 
     private String checker;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date registerTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date checkTime;
 
     private Integer resumeId;
 
-    private String result;
+    private String result; // 面试结果  通过, 不通过
 
     private String interviewComment; // 面试评价~
 
@@ -71,7 +75,7 @@ public class EngageInterview implements Serializable {
 
     private Integer interviewStatus; // 1. 已经面试
 
-    private Integer checkStatus;
+    private Integer checkStatus; // 0, 未被筛选  1, 筛选通过 建议录用 2. 建议面试 3. 建议笔试 5. 删除面试
 
 
 }
