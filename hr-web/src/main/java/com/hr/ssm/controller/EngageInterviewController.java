@@ -72,8 +72,10 @@ public class EngageInterviewController {
 
 
     // upd
-    @RequestMapping(value = "/upd", method = RequestMethod.PUT)
+    @RequestMapping(value = "/upd", method = RequestMethod.POST)
     CommonResult<Object> updateInterview(EngageInterview interview, HttpServletRequest request) {
+
+        // bastard...
 
         Object uId = request.getAttribute("uId");
         if (uId != null) {
