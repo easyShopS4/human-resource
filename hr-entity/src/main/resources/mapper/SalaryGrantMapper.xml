@@ -1,5 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.ssm.mapper.SalaryGrantMapper">
+    <resultMap type="com.hr.ssm.entity.SalaryGrant" id="BaseResultMap">
 
+    <id jdbcType="INTEGER" property="sgrId" column="sgr_id"/>
+
+    <result jdbcType="VARCHAR" property="salaryGrantId" column="salary_grant_id"/>
+
+    <result jdbcType="VARCHAR" property="salaryStandardId" column="salary_standard_id"/>
+
+    <result jdbcType="INTEGER" property="firstKindId" column="first_kind_id"/>
+
+    <result jdbcType="VARCHAR" property="firstKindName" column="first_kind_name"/>
+
+    <result jdbcType="INTEGER" property="secondKindId" column="second_kind_id"/>
+
+    <result jdbcType="VARCHAR" property="secondKindName" column="second_kind_name"/>
+
+    <result jdbcType="INTEGER" property="thirdKindId" column="third_kind_id"/>
+
+    <result jdbcType="VARCHAR" property="thirdKindName" column="third_kind_name"/>
+
+    <result jdbcType="INTEGER" property="humanAmount" column="human_amount"/>
+
+    <result jdbcType="DOUBLE" property="salaryStandardSum" column="salary_standard_sum"/>
+
+    <result jdbcType="DOUBLE" property="salaryPaidSum" column="salary_paid_sum"/>
+
+    <result jdbcType="VARCHAR" property="register" column="register"/>
+
+    <result jdbcType="TIMESTAMP" property="registTime" column="regist_time"/>
+
+    <result jdbcType="VARCHAR" property="checker" column="checker"/>
+
+    <result jdbcType="TIMESTAMP" property="checkTime" column="check_time"/>
+
+    <result jdbcType="INTEGER" property="checkStatus" column="check_status"/>
+
+</resultMap>
+
+    <resultMap type="com.hr.ssm.entity.SalaryGrant" id="BaseResultMap2">
+        <id jdbcType="INTEGER" property="sgrId" column="sgr_id"/>
+        <result jdbcType="VARCHAR" property="salaryStandardId" column="salary_standard_id"/>
+        <result jdbcType="VARCHAR" property="register" column="register"/>
+        <result jdbcType="DOUBLE" property="mission" column="mission"/>
+        <result jdbcType="DOUBLE" property="travel" column="travel"/>
+        <result jdbcType="DOUBLE" property="housing" column="housing"/>
+        <result jdbcType="DOUBLE" property="base" column="base"/>
+        <result jdbcType="DOUBLE" property="year" column="year"/>
+        <result jdbcType="DOUBLE" property="missed" column="missed"/>
+        <result jdbcType="DOUBLE" property="bounsSum" column="bouns_sum,"/>
+        <result jdbcType="DOUBLE" property="saleSum" column="sale_sum"/>
+        <result jdbcType="DOUBLE" property="deductSum" column="deduct_sum"/>
+        <result jdbcType="DOUBLE" property="salaryPaidSum" column="salary_paid_sum"/>
+        <result jdbcType="INTEGER" property="firstKindId" column="grd_id"/>
+    </resultMap>
+
+    <!-- 批量添加 -->
+   <insert id="saveBatch" parameterType="com.hr.ssm.entity.SalaryGrantBatch">
+        insert into salary_grant VALUES
+        <foreach collection="listsg" separator="," item="st">
+            (null,#{st.salaryGrantId},#{st.salaryStandardId},#{st.firstKindId},#{st.firstKindName},null,null,null,null,#{st.humanAmount},#{st.salaryStandardSum},#{st.salaryStandardSum},#{st.register},SYSDATE(),null,null,#{st.checkStatus})
+        </foreach>
+
+    </insert>
+
+    <select id="findListCheck" resultMap="BaseResultMap">
+        select * from salary_grant where check_status = 1
+    </select>
+    <select id="findById" resultMap="BaseResultMap2">
+    select  a.sgr_id,
+            a.salary_standard_id,
+            a.register,
+            b.mission ,
+            b.travel,
+            b.housing,
+            b.base,
+            b.year,
+            b.missed ,
+            c.bouns_sum,
+            c.sale_sum,
+            c.deduct_sum,
+            a.salary_paid_sum,
+            c.grd_id
+            from salary_grant a,salary_standard b, salary_grant_details c
+    where a.check_status = 1 and a.salary_grant_id=b.ssd_id and a.salary_grant_id=c.salary_grant_id
+        and sgr_id=#{sgrId}
+  </select>
 </mapper>

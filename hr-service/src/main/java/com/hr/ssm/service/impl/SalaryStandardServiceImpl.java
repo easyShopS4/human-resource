@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hr.api.base.DataGridView;
 import com.hr.ssm.entity.EngageMajorRelease;
+import com.hr.ssm.entity.SalaryGrantBatch;
 import com.hr.ssm.entity.SalaryStandard;
 import com.hr.ssm.mapper.SalaryStandardMapper;
 import com.hr.ssm.service.SalaryStandardService;
@@ -74,4 +75,15 @@ public class SalaryStandardServiceImpl extends ServiceImpl<SalaryStandardMapper,
         return new DataGridView("", 0, pageInfo.getTotal(), dataList);
     }
 
+    public List<SalaryStandard> fintBname(){
+            return SsalaryStandardMapper.fintBname();
+    }
+    public List<SalaryStandard> fintChangeStatus(Integer changeStatus){
+       return SsalaryStandardMapper.fintChangeStatus(changeStatus);
+
+    }
+    //状态修改
+    public void updateBatch(SalaryGrantBatch sg){
+        SsalaryStandardMapper.updateBatch(sg);
+    }
 }

@@ -1,5 +1,6 @@
 package com.hr.ssm.mapper;
 
+import com.hr.ssm.entity.SalaryGrantBatch;
 import com.hr.ssm.entity.SalaryGrantDetails;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface SalaryGrantDetailsMapper extends BaseMapper<SalaryGrantDetails> {
 
+    void saveBatch(SalaryGrantBatch sg);
 }

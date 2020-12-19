@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.ssm.mapper.SalaryGrantDetailsMapper">
+ <insert id="saveBatch" parameterType="com.hr.ssm.entity.SalaryGrantBatch">
 
+    insert into salary_grant_details VALUES
+       <foreach collection="listsg" separator="," item="st">
+           (null,#{st.salaryGrantId},#{st.salaryStandardId},#{st.register},#{st.bounsSum},#{st.saleSum},#{st.deductSum},#{st.salaryStandardSum},#{st.salaryStandardSum})
+       </foreach>
+</insert>
 </mapper>

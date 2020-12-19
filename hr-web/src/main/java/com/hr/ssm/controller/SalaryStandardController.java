@@ -122,5 +122,26 @@ public class SalaryStandardController {
         return salaryStandardService.getSalaryStandardByPage(p, null);
     }
 
+   // P_Registration.html
+  @RequestMapping("/P_RegistrationReview")
+    public List<SalaryStandard> getRegistrationReview() {
+
+        List<SalaryStandard> list=salaryStandardService.fintBname();
+        for (int i=0;i<list.size();i++){
+            System.out.println(list.get(i));
+        }
+
+        return   list;
+    }
+    //P_RegistrationReviewSecond.html
+        @RequestMapping("/P_RegistrationReviewSecond")
+        public  List<SalaryStandard>  getRegistrationReviewSecond(String id){
+
+              Integer i= Integer.parseInt(id);
+
+       return salaryStandardService.fintChangeStatus(i);
+
+        }
+
 }
 

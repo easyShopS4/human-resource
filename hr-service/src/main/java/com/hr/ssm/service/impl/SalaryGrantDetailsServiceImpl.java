@@ -1,9 +1,11 @@
 package com.hr.ssm.service.impl;
 
+import com.hr.ssm.entity.SalaryGrantBatch;
 import com.hr.ssm.entity.SalaryGrantDetails;
 import com.hr.ssm.mapper.SalaryGrantDetailsMapper;
 import com.hr.ssm.service.SalaryGrantDetailsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +18,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SalaryGrantDetailsServiceImpl extends ServiceImpl<SalaryGrantDetailsMapper, SalaryGrantDetails> implements SalaryGrantDetailsService {
+  @Autowired
+    SalaryGrantDetailsMapper sgd;
 
+    public void saveBatch(SalaryGrantBatch sg){
+        sgd.saveBatch(sg);
+    }
 }

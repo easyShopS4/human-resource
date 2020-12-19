@@ -34,13 +34,21 @@
         <result jdbcType="VARCHAR" property="remark" column="remark"/>
 
     </resultMap>
+    <resultMap type="com.hr.ssm.entity.SalaryStandard" id="BaseResultMap2">
+
+        <result jdbcType="VARCHAR" property="checkComment" column="Bname"/>
+        <result jdbcType="INTEGER" property="checkStatus" column="aid"/>
+        <result jdbcType="DOUBLE" property="salarySum" column="asum"/>
+        <result jdbcType="INTEGER" property="changeStatus" column="astatus"/>
+
+    </resultMap>
     <sql id="Base_Column_List">ssd_id, standard_id, standard_name, designer, register, checker, changer, register_time,check_time, change_time, salary_sum, check_status, change_status, check_comment,remark </sql>
 
     <select id="findSalaryStandard" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from salary_standard where  1=1
-        <if test="ss.standardId != null">
+        <if test="ss.standardId != null and ss.standardId != ''">
             <bind name="myStandardId" value="'%'+ss.standardId+'%'"></bind>
            and standard_id LIKE #{myStandardId}
          </if>
@@ -49,7 +57,7 @@
             and standard_name  = #{ss.standardName}
         </if>
         <if test="ss.registerTime != null and ss.checkTime!=null" >
-            <![CDATA[ and register_time >=#{ss.registerTime} and  register_time >=#{ss.checkTime}]]>
+            <![CDATA[ and register_time >=#{ss.registerTime} and  register_time <=#{ss.checkTime}]]>
         </if>
 
 
@@ -59,7 +67,7 @@
         select
         <include refid="Base_Column_List"/>
         from salary_standard where  check_status=2
-        <if test="ss.standardId != null">
+        <if test="ss.standardId != null and ss.standardId != ''">
             <bind name="myStandardId" value="'%'+ss.standardId+'%'"></bind>
             and standard_id LIKE #{myStandardId}
         </if>
@@ -68,10 +76,24 @@
             and standard_name  = #{ss.standardName}
         </if>
         <if test="ss.registerTime != null and ss.checkTime!=null" >
-            <![CDATA[ and register_time >=#{ss.registerTime} and  register_time >=#{ss.checkTime}]]>
+            <![CDATA[ and register_time >=#{ss.registerTime} and  register_time <=#{ss.checkTime}]]>
         </if>
 
 
     </select>
 
+    <select id="fintBname" resultMap="BaseResultMap2">
+select b.first_kind_name Bname, count(a.ssd_id) aid,SUM(a.salary_sum) asum ,a.change_status astatus from  salary_standard a, config_file_first_kind b WHERE check_status !=4 and a.change_status = b.ffk_id  group by  b.first_kind_name,a.change_status
+    </select>
+    <select id="fintChangeStatus" resultMap="BaseResultMap" >
+select * from  salary_standard where change_status =  #{changeStatus}
+    </select>
+
+    <update id="updateBatch" parameterType="com.hr.ssm.entity.SalaryGrantBatch">
+        update salary_standard set change_status=4 where ssd_id in
+
+        <foreach collection="listsg" item="st" open="(" separator="," close=")">
+            #{st.salaryGrantId}
+        </foreach>
+    </update>
 </mapper>
