@@ -59,4 +59,16 @@ public class EngageResumeServiceImpl extends ServiceImpl<EngageResumeMapper, Eng
 
         return new DataGridView("", 0, resumeIPage.getTotal(), resumeIPage.getRecords());
     }
+
+
+    @Override
+    public DataGridView getAllPassResume(IPage<EngageResume> iPage, EngageResume resume) {
+
+
+        IPage<EngageResume> pageInfo = resumeMapper.getAllPassResume(iPage, resume);
+
+        return new DataGridView("", 0, pageInfo.getTotal(), pageInfo.getRecords());
+    }
+
+
 }

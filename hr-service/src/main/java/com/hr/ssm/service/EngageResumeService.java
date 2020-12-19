@@ -17,4 +17,7 @@ public interface EngageResumeService extends IService<EngageResume> {
 
     DataGridView getResumeByPageAndCondition(EngageResume resume, IPage<EngageResume> page);
 
+
+    DataGridView getAllPassResume(IPage<EngageResume> iPage, EngageResume resume);
+
 }

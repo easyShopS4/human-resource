@@ -147,4 +147,10 @@ public class EngageResume implements Serializable {
     @TableField(exist = false)
     private Date endDate;
 
+    @TableField(exist = false)
+    private Integer interviewCheckStatus;
+
+    @TableField(exist = false)
+    private Integer einId; // 面试表主键
+
 }

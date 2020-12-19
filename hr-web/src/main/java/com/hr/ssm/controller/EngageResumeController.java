@@ -84,5 +84,19 @@ public class EngageResumeController {
         return new CommonResult<>(200, "ok", "ok");
     }
 
+    // 录用管理
+    @GetMapping("/paging/apply")
+    public DataGridView getAllPassResume(Integer page, Integer limit, EngageResume resume) {
+
+        Page<EngageResume> iPage = new Page<>(page, limit);
+
+        if (resume == null) {
+            resume.setInterviewStatus(1);
+            resume.setInterviewCheckStatus(1);
+        }
+
+        return resumeService.getAllPassResume(iPage, resume);
+    }
+
 }
 
