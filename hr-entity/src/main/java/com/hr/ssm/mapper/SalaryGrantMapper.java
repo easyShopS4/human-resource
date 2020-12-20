@@ -21,4 +21,6 @@ public interface SalaryGrantMapper extends BaseMapper<SalaryGrant> {
     public List<SalaryGrant> findListCheck();
 
     public SalaryGrant findById(Integer sgrId);
+
+    public void updateCheckStatus(SalaryGrant sg);
 }

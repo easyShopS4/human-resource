@@ -1,5 +1,6 @@
 package com.hr.ssm.service.impl;
 
+import com.hr.ssm.entity.SalaryGrant;
 import com.hr.ssm.entity.SalaryGrantBatch;
 import com.hr.ssm.entity.SalaryGrantDetails;
 import com.hr.ssm.mapper.SalaryGrantDetailsMapper;
@@ -24,4 +25,7 @@ public class SalaryGrantDetailsServiceImpl extends ServiceImpl<SalaryGrantDetail
     public void saveBatch(SalaryGrantBatch sg){
         sgd.saveBatch(sg);
     }
+
+
+
 }

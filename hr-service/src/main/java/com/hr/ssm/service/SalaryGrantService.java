@@ -20,8 +20,10 @@ public interface SalaryGrantService extends IService<SalaryGrant> {
 
     public void saveBatch(SalaryGrantBatch sg);
 
-
     public List<SalaryGrant> findListCheck();
 
     public SalaryGrant findById(Integer sgrId);
+
+    public void Updates(SalaryGrant sg);
+
 }

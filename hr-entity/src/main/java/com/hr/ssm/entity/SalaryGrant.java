@@ -1,7 +1,11 @@
 package com.hr.ssm.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+
+import java.beans.Transient;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
@@ -79,16 +83,26 @@ public class SalaryGrant implements Serializable {
     // "salary_grant_details" : 薪酬发放详细信息
 /* 	"bouns_sum" : 奖励金额
     "sale_sum" : 销售绩效金额                                                                       */
-/* 	"deduct_sum" : 应扣金额                                                                       */
+/* 	"deduct_sum" : 应扣金额
+*                                                                      */
+    @TableField(exist = false)
     private Double bounsSum;
+    @TableField(exist = false)
     private Double saleSum;
+    @TableField(exist = false)
     private Double deductSum;
-    // "salary_standard" : 标准酬薪表
+    // "salary_standard" : 标准酬薪
+    @TableField(exist = false)
     private Double  mission ;
+    @TableField(exist = false)
     private Double  travel;
+    @TableField(exist = false)
     private Double  housing;
+    @TableField(exist = false)
     private Double  base;
+    @TableField(exist = false)
     private Double year;
+    @TableField(exist = false)
     private Double  missed ;
 
 

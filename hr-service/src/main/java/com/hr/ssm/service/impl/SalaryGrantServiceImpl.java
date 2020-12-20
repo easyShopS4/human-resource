@@ -36,9 +36,9 @@ public class SalaryGrantServiceImpl extends ServiceImpl<SalaryGrantMapper, Salar
         List<SalaryGrant> list=sg.getListsg();
         for (int i=0;i<list.size();i++){
             list.get(i).setCheckStatus(1);
-            System.out.println("没处理的实发工资"+ list.get(i).getSalaryStandardSum());
-            list.get(i).setSalaryStandardSum(list.get(i).getSalaryStandardSum()+list.get(i).getBounsSum()+list.get(i).getSaleSum()-list.get(i).getDeductSum());
-         System.out.println("处理后的实发工资" + list.get(i).getSalaryStandardSum());
+            System.out.println("没处理的实发工资"+ list.get(i).getSalaryPaidSum());
+            list.get(i).setSalaryPaidSum(list.get(i).getSalaryStandardSum()+list.get(i).getBounsSum()+list.get(i).getSaleSum()-list.get(i).getDeductSum());
+             System.out.println("处理后的实发工资" + list.get(i).getSalaryPaidSum());
         }
         sgm.saveBatch(sg);//salary_grant薪酬发放登记表(add)
         sgd.saveBatch(sg);//salary_grant_details薪酬发放详细信息(add)
@@ -52,5 +52,9 @@ public class SalaryGrantServiceImpl extends ServiceImpl<SalaryGrantMapper, Salar
     }
     public SalaryGrant findById(Integer sgrId){
        return sgm.findById(sgrId);
+    }
+    public void Updates(SalaryGrant sg){
+        sgm.updateCheckStatus(sg); //salary_grant的状态修改
+
     }
 }

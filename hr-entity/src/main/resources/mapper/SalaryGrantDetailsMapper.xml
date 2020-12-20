@@ -5,7 +5,8 @@
 
     insert into salary_grant_details VALUES
        <foreach collection="listsg" separator="," item="st">
-           (null,#{st.salaryGrantId},#{st.salaryStandardId},#{st.register},#{st.bounsSum},#{st.saleSum},#{st.deductSum},#{st.salaryStandardSum},#{st.salaryStandardSum})
+           (null,#{st.salaryGrantId},#{st.salaryStandardId},#{st.register},#{st.bounsSum},#{st.saleSum},#{st.deductSum},#{st.salaryStandardSum},#{st.salaryPaidSum})
        </foreach>
 </insert>
+
 </mapper>

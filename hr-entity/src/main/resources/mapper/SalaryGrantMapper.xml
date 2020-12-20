@@ -49,7 +49,7 @@
         <result jdbcType="DOUBLE" property="base" column="base"/>
         <result jdbcType="DOUBLE" property="year" column="year"/>
         <result jdbcType="DOUBLE" property="missed" column="missed"/>
-        <result jdbcType="DOUBLE" property="bounsSum" column="bouns_sum,"/>
+        <result jdbcType="DOUBLE" property="bounsSum" column="bouns_sum"/>
         <result jdbcType="DOUBLE" property="saleSum" column="sale_sum"/>
         <result jdbcType="DOUBLE" property="deductSum" column="deduct_sum"/>
         <result jdbcType="DOUBLE" property="salaryPaidSum" column="salary_paid_sum"/>
@@ -60,7 +60,7 @@
    <insert id="saveBatch" parameterType="com.hr.ssm.entity.SalaryGrantBatch">
         insert into salary_grant VALUES
         <foreach collection="listsg" separator="," item="st">
-            (null,#{st.salaryGrantId},#{st.salaryStandardId},#{st.firstKindId},#{st.firstKindName},null,null,null,null,#{st.humanAmount},#{st.salaryStandardSum},#{st.salaryStandardSum},#{st.register},SYSDATE(),null,null,#{st.checkStatus})
+            (null,#{st.salaryGrantId},#{st.salaryStandardId},#{st.firstKindId},#{st.firstKindName},null,null,null,null,#{st.humanAmount},#{st.salaryStandardSum},#{st.salaryPaidSum},#{st.register},SYSDATE(),null,null,#{st.checkStatus})
         </foreach>
 
     </insert>
@@ -87,4 +87,7 @@
     where a.check_status = 1 and a.salary_grant_id=b.ssd_id and a.salary_grant_id=c.salary_grant_id
         and sgr_id=#{sgrId}
   </select>
+    <update id="updateCheckStatus">
+            update salary_grant set check_status=2 where sgr_id=${sgrId}
+    </update>
 </mapper>

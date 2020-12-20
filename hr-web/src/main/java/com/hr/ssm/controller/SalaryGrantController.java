@@ -69,10 +69,18 @@ public class SalaryGrantController {
     }
 //http://127.0.0.1:8080/ssm/salary-grant/updates
 @RequestMapping("updates") //id查询(salary_grant(多表联查))
-public SalaryGrant  getUpdates(SalaryGrant sg) {
-    System.out.println("id值"+sg);
+public String  getUpdates(SalaryGrant sg) {
+     System.out.println("id值"+sg);
+    salaryGrantService.Updates(sg);
+    return "1";
+    }
+    //http://127.0.0.1:8080/ssm/salary-grant/P_Registration_Enquiry
+    @RequestMapping("P_Registration_Enquiry") //单表查询
+    public List<SalaryGrant>  getRegistration_Enquiry(SalaryGrant sg) {
+        //System.out.println("id值"+sg);
+       List<SalaryGrant> list= salaryGrantService.list();
+        return list;
+    }
 
-    return null;
-}
 }
 
